@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 namespace Framework;
 
+use Framework\Exceptions\ValidationException;
+
 class App
 {
     private Router $router;
     private Container $container;
+
 
     public function __construct(string $containerDefinitionsPath = null)
     {
@@ -22,6 +25,7 @@ class App
 
     public function run()
     {
+
         $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         $method = $_SERVER['REQUEST_METHOD'];
 
